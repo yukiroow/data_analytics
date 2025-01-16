@@ -47,45 +47,33 @@ from prettytable import PrettyTable
 
 statistical_table = PrettyTable()
 statistical_table.title = "resto1.csv Statistics"
-statistical_table.field_names = [" ", "S", "M", "L"]
+statistical_table.field_names = [
+    " ",
+    "Mean",
+    "Median",
+    "Mode",
+    "Variance (S)",
+    "Standard Deviation (S)",
+]
 statistical_table.add_row(
     [
-        "Mean",
+        "S",
         smi_mean,
-        mdi_mean,
-        lgi_mean,
-    ]
-)
-statistical_table.add_row(
-    [
-        "Median",
         smi_median,
-        mdi_median,
-        lgi_median,
-    ]
-)
-statistical_table.add_row(
-    [
-        "Modes",
         smi_mode.values.tolist(),
-        mdi_mode.values.tolist(),
-        lgi_mode,
-    ]
-)
-statistical_table.add_row(
-    [
-        "Variance (P)",
         smi_var,
-        mdi_var,
-        lgi_var
+        smi_std,
     ]
 )
 statistical_table.add_row(
     [
-        "Standard Deviation (P)",
-        smi_std,
+        "M",
+        mdi_mean,
+        mdi_median,
+        mdi_mode.values.tolist(),
+        mdi_var,
         mdi_std,
-        lgi_std
     ]
 )
+statistical_table.add_row(["L", lgi_mean, lgi_median, lgi_mode, lgi_var, lgi_std])
 print(statistical_table)

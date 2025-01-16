@@ -73,44 +73,41 @@ from prettytable import PrettyTable
 
 statistical_table = PrettyTable()
 statistical_table.title = "CLASS.csv Statistics"
-statistical_table.field_names = [" ", "Quiz 1", "Quiz 2", "Exam"]
+statistical_table.field_names = [
+    " ",
+    "Mean",
+    "Median",
+    "Modes",
+    "Variance (P)",
+    "Standard Deviation (P)",
+]
 statistical_table.add_row(
     [
-        "Mean",
+        "Quiz 1",
         class_means["Quiz 1 mean score"],
-        class_means["Quiz 2 mean score"],
-        class_means["Exam mean score"],
-    ]
-)
-statistical_table.add_row(
-    [
-        "Median",
         class_medians["Quiz 1 median score"],
-        class_medians["Quiz 2 median score"],
-        class_medians["Exam median score"],
-    ]
-)
-statistical_table.add_row(
-    [
-        "Modes",
         class_modes["Quiz 1 mode score"].tolist(),
-        class_modes["Quiz 2 mode score"],
-        class_modes["Exam mode score"],
-    ]
-)
-statistical_table.add_row(
-    [
-        "Variance (P)",
         class_vars["Quiz 1 variance"],
-        class_vars["Quiz 2 variance"],
-        class_vars["Exam variance"],
+        class_stds["Quiz 1 standard deviation"],
     ]
 )
 statistical_table.add_row(
     [
-        "Standard Deviation (P)",
-        class_stds["Quiz 1 standard deviation"],
+        "Quiz 2",
+        class_means["Quiz 2 mean score"],
+        class_medians["Quiz 2 median score"],
+        class_modes["Quiz 2 mode score"],
+        class_vars["Quiz 2 variance"],
         class_stds["Quiz 2 standard deviation"],
+    ]
+)
+statistical_table.add_row(
+    [
+        "Exam",
+        class_means["Exam mean score"],
+        class_medians["Exam median score"],
+        class_modes["Exam mode score"],
+        class_vars["Exam variance"],
         class_stds["Exam standard deviation"],
     ]
 )
