@@ -66,8 +66,6 @@ class_stds = panda.Series(
     ],
 )
 
-print(class_stds["Quiz 1 standard deviation"])
-
 # Display in Tabular Format
 from prettytable import PrettyTable
 
@@ -81,34 +79,32 @@ statistical_table.field_names = [
     "Variance (P)",
     "Standard Deviation (P)",
 ]
-statistical_table.add_row(
+statistical_table.add_rows(
     [
-        "Quiz 1",
-        class_means["Quiz 1 mean score"],
-        class_medians["Quiz 1 median score"],
-        class_modes["Quiz 1 mode score"].tolist(),
-        class_vars["Quiz 1 variance"],
-        class_stds["Quiz 1 standard deviation"],
-    ]
-)
-statistical_table.add_row(
-    [
-        "Quiz 2",
-        class_means["Quiz 2 mean score"],
-        class_medians["Quiz 2 median score"],
-        class_modes["Quiz 2 mode score"],
-        class_vars["Quiz 2 variance"],
-        class_stds["Quiz 2 standard deviation"],
-    ]
-)
-statistical_table.add_row(
-    [
-        "Exam",
-        class_means["Exam mean score"],
-        class_medians["Exam median score"],
-        class_modes["Exam mode score"],
-        class_vars["Exam variance"],
-        class_stds["Exam standard deviation"],
+        [
+            "Quiz 1",
+            class_means["Quiz 1 mean score"],
+            class_medians["Quiz 1 median score"],
+            class_modes["Quiz 1 mode score"].tolist(),
+            class_vars["Quiz 1 variance"],
+            class_stds["Quiz 1 standard deviation"],
+        ],
+        [
+            "Quiz 2",
+            class_means["Quiz 2 mean score"],
+            class_medians["Quiz 2 median score"],
+            class_modes["Quiz 2 mode score"],
+            class_vars["Quiz 2 variance"],
+            class_stds["Quiz 2 standard deviation"],
+        ],
+        [
+            "Exam",
+            class_means["Exam mean score"],
+            class_medians["Exam median score"],
+            class_modes["Exam mode score"],
+            class_vars["Exam variance"],
+            class_stds["Exam standard deviation"],
+        ],
     ]
 )
 print(statistical_table)

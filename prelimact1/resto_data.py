@@ -55,25 +55,25 @@ statistical_table.field_names = [
     "Variance (S)",
     "Standard Deviation (S)",
 ]
-statistical_table.add_row(
+statistical_table.add_rows(
     [
-        "S",
-        smi_mean,
-        smi_median,
-        smi_mode.values.tolist(),
-        smi_var,
-        smi_std,
+        [
+            "S",
+            smi_mean,
+            smi_median,
+            smi_mode.values.tolist(),
+            smi_var,
+            smi_std,
+        ],
+        [
+            "M",
+            mdi_mean,
+            mdi_median,
+            mdi_mode.values.tolist(),
+            mdi_var,
+            mdi_std,
+        ],
+        ["L", lgi_mean, lgi_median, lgi_mode, lgi_var, lgi_std],
     ]
 )
-statistical_table.add_row(
-    [
-        "M",
-        mdi_mean,
-        mdi_median,
-        mdi_mode.values.tolist(),
-        mdi_var,
-        mdi_std,
-    ]
-)
-statistical_table.add_row(["L", lgi_mean, lgi_median, lgi_mode, lgi_var, lgi_std])
 print(statistical_table)
