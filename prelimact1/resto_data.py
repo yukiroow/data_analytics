@@ -3,7 +3,6 @@
 # Prelim Activity 1
 import pandas as panda
 
-# resto1.csv
 resto_data = panda.read_csv("prelimact1/resto1.csv")
 
 small_items = resto_data[resto_data["Size"] == "S"]

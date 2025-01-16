@@ -3,7 +3,6 @@
 # Prelim Activity 1
 import pandas as panda
 
-# CLASS.csv
 class_data = panda.read_csv("prelimact1/CLASS.csv")
 
 class_means = panda.Series(

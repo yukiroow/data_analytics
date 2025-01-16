@@ -3,7 +3,6 @@
 # Prelim Activity 1
 import pandas as panda
 
-# SAMPLE.csv
 sample_data = panda.read_csv("prelimact1/SAMPLE.csv")
 
 sample_mean = sample_data["AGE"].mean()
