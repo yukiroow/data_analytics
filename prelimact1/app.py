@@ -13,18 +13,27 @@ sample_median = sample_data["AGE"].median()
 
 sample_mode = sample_data["AGE"].mode()
 
-average_age_year1 = sample_data[sample_data["YEAR"] == 1]["AGE"].mean() # Filter to only 1st years
-average_age_year2 = sample_data[sample_data["YEAR"] == 2]["AGE"].mean() # Filter to only 2nd years
-average_age_year3 = sample_data[sample_data["YEAR"] == 3]["AGE"].mean() # Filter to only 3rd years
-average_age_year4 = sample_data[sample_data["YEAR"] == 4]["AGE"].mean() # Filter to only 4th years
+# Average Ages per Year Level to be used for Standard Deviation and Variation
+average_age_year1 = sample_data[sample_data["YEAR"] == 1][
+    "AGE"
+].mean()  # Filter to only 1st years
+average_age_year2 = sample_data[sample_data["YEAR"] == 2][
+    "AGE"
+].mean()  # Filter to only 2nd years
+average_age_year3 = sample_data[sample_data["YEAR"] == 3][
+    "AGE"
+].mean()  # Filter to only 3rd years
+average_age_year4 = sample_data[sample_data["YEAR"] == 4][
+    "AGE"
+].mean()  # Filter to only 4th years
 
 average_ages = panda.Series(
     [average_age_year1, average_age_year2, average_age_year3, average_age_year4]
 )
 
-sample_std = average_ages.std(ddof=0) # Population Standard Deviation
+sample_std = average_ages.std(ddof=0)  # Population Standard Deviation
 
-sample_var = average_ages.var(ddof=0) # Population Variation
+sample_var = average_ages.var(ddof=0)  # Population Variation
 
 # CLASS.csv
 class_data = panda.read_csv("prelimact1/CLASS.csv")
@@ -68,8 +77,65 @@ class_modes = panda.Series(
     index=["Quiz 1 mode score", "Quiz 2 mode score", "Exam mode score"],
 )
 
-class_vars = panda.Series([class_data["quiz 1"].var(ddof=0), class_data["quiz 2"].var(ddof=0), class_data["EXAM"].var(ddof=0)],
-                          index=["Quiz 1 variance", "Quiz 2 variance", "Exam variance"])
+class_vars = panda.Series(
+    [
+        class_data["quiz 1"].var(ddof=0),
+        class_data["quiz 2"].var(ddof=0),
+        class_data["EXAM"].var(ddof=0),
+    ],
+    index=["Quiz 1 variance", "Quiz 2 variance", "Exam variance"],
+)
 
-class_stds =  panda.Series([class_data["quiz 1"].std(ddof=0), class_data["quiz 2"].std(ddof=0), class_data["EXAM"].std(ddof=0)],
-                          index=["Quiz 1 standard deviation", "Quiz 2 standard deviation", "Exam standard deviation"])
+class_stds = panda.Series(
+    [
+        class_data["quiz 1"].std(ddof=0),
+        class_data["quiz 2"].std(ddof=0),
+        class_data["EXAM"].std(ddof=0),
+    ],
+    index=[
+        "Quiz 1 standard deviation",
+        "Quiz 2 standard deviation",
+        "Exam standard deviation",
+    ],
+)
+
+# resto1.csv
+
+resto_data = panda.read_csv("prelimact1/resto1.csv")
+
+small_items = resto_data[resto_data["Size"] == "S"]
+medium_items = resto_data[resto_data["Size"] == "M"]
+large_items = resto_data[resto_data["Size"] == "L"]
+
+# Small Items
+smi_mean = small_items["Count"].mean()
+smi_median = small_items["Count"].median()
+smi_mode = (
+    None
+    if small_items["Count"].size == small_items["Count"].mode().size
+    else small_items["Count"].mode()
+)
+smi_var = small_items["Count"].var()
+smi_std = small_items["Count"].std()
+
+# Medium Items
+mdi_mean = medium_items["Count"].mean()
+mdi_median = medium_items["Count"].median()
+mdi_mode = (
+    None
+    if medium_items["Count"].size == medium_items["Count"].mode().size
+    else medium_items["Count"].mode()
+)
+mdi_var = medium_items["Count"].var()
+mdi_std = medium_items["Count"].std()
+
+# Large Items
+lgi_mean = large_items["Count"].mean()
+lgi_median = large_items["Count"].median()
+lgi_mode = (
+    None
+    if large_items["Count"].size == large_items["Count"].mode().size
+    else large_items["Count"].mode()
+)
+lgi_var = large_items["Count"].var()
+lgi_std = large_items["Count"].std()
