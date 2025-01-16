@@ -2,6 +2,8 @@
 # 9463 - IT 322
 # Prelim Activity 1
 import pandas as panda
+import matplotlib.pyplot as mpl
+import numpy as np
 
 sample_data = panda.read_csv("prelimact1/SAMPLE.csv")
 
@@ -32,3 +34,43 @@ average_ages = panda.Series(
 sample_std = average_ages.std(ddof=0)  # Population Standard Deviation
 
 sample_var = average_ages.var(ddof=0)  # Population Variation
+
+# Data Visualization
+
+# Mean and Median
+first_element = sample_data["NAME"][0]
+last_element = sample_data["NAME"][9]
+
+bar_x = np.array(sample_data["NAME"])
+bar_y = np.array(sample_data["AGE"])
+median_points_x = [first_element, last_element]
+median_points_y = [sample_median, sample_median]
+mean_points_x = [first_element, last_element]
+mean_points_y = [sample_mean, sample_mean]
+
+mpl.figure(1)
+mpl.title("Mean and Median Age of Sample Students")
+mpl.xlabel("Students")
+mpl.ylabel("Ages")
+
+mpl.bar(bar_x, bar_y, width = 0.3)
+mpl.plot(median_points_x, median_points_y, color = "red", label = "Median Age")
+mpl.plot(mean_points_x, mean_points_y, color = "yellow", label = "Mean Age")
+
+mpl.legend()
+
+
+# Mode
+from matplotlib.lines import Line2D
+mpl.figure(2)
+mpl.title("Average Age per Year Level of Sample Students")
+mpl.xlabel("Year Level")
+mpl.ylabel("Average Age")
+
+mode_bar_x = np.array([1, 2, 3, 4])
+mode_bar_y = np.array(average_ages)
+mode_bar = mpl.bar(mode_bar_x, mode_bar_y)
+mode_bar[3].set_color('red')
+mpl.legend([Line2D([0], [0], color="red", lw=4)],["Mode Average Age"])
+
+mpl.show()
