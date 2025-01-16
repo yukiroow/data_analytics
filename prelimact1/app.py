@@ -67,3 +67,9 @@ class_modes = panda.Series(
     ],
     index=["Quiz 1 mode score", "Quiz 2 mode score", "Exam mode score"],
 )
+
+class_vars = panda.Series([class_data["quiz 1"].var(ddof=0), class_data["quiz 2"].var(ddof=0), class_data["EXAM"].var(ddof=0)],
+                          index=["Quiz 1 variance", "Quiz 2 variance", "Exam variance"])
+
+class_stds =  panda.Series([class_data["quiz 1"].std(ddof=0), class_data["quiz 2"].std(ddof=0), class_data["EXAM"].std(ddof=0)],
+                          index=["Quiz 1 standard deviation", "Quiz 2 standard deviation", "Exam standard deviation"])
