@@ -35,6 +35,14 @@ sample_std = average_ages.std(ddof=0)  # Population Standard Deviation
 
 sample_var = average_ages.var(ddof=0)  # Population Variation
 
+# Display in Tabular Format
+from prettytable import PrettyTable
+statistical_table = PrettyTable()
+statistical_table.title = "SAMPLE.csv Statistics"
+statistical_table.field_names = ["Mean", "Median", "Modes", "Variance (P)", "Standard Deviation (P)"]
+statistical_table.add_row([sample_mean, sample_median, sample_mode.values.tolist(), sample_var, sample_std])
+print(statistical_table)
+
 # Data Visualization
 
 # Mean and Median
