@@ -33,14 +33,15 @@ average_ages = panda.Series(
 
 sample_std = average_ages.std(ddof=0)  # Population Standard Deviation
 
-sample_var = average_ages.var(ddof=0)  # Population Variation
-
 # Display in Tabular Format
 from prettytable import PrettyTable
+
 statistical_table = PrettyTable()
 statistical_table.title = "SAMPLE.csv Statistics"
-statistical_table.field_names = ["Mean", "Median", "Modes", "Variance (P)", "Standard Deviation (P)"]
-statistical_table.add_row([sample_mean, sample_median, sample_mode.values.tolist(), sample_var, sample_std])
+statistical_table.field_names = ["Mean", "Median", "Modes", "Standard Deviation (P)"]
+statistical_table.add_row(
+    [sample_mean, sample_median, sample_mode.values.tolist(), sample_std]
+)
 print(statistical_table)
 
 # Data Visualization
@@ -61,15 +62,16 @@ mpl.title("Mean and Median Age of Sample Students")
 mpl.xlabel("Students")
 mpl.ylabel("Ages")
 
-mpl.bar(bar_x, bar_y, width = 0.3)
-mpl.plot(median_points_x, median_points_y, color = "red", label = "Median Age")
-mpl.plot(mean_points_x, mean_points_y, color = "yellow", label = "Mean Age")
+mpl.bar(bar_x, bar_y, width=0.3)
+mpl.plot(median_points_x, median_points_y, color="red", label="Median Age")
+mpl.plot(mean_points_x, mean_points_y, color="yellow", label="Mean Age")
 
 mpl.legend()
 
 
 # Mode
 from matplotlib.lines import Line2D
+
 mpl.figure(2)
 mpl.title("Average Age per Year Level of Sample Students")
 mpl.xlabel("Year Level")
@@ -78,7 +80,21 @@ mpl.ylabel("Average Age")
 mode_bar_x = np.array([1, 2, 3, 4])
 mode_bar_y = np.array(average_ages)
 mode_bar = mpl.bar(mode_bar_x, mode_bar_y)
-mode_bar[3].set_color('red')
-mpl.legend([Line2D([0], [0], color="red", lw=4)],["Mode Average Age"])
+mode_bar[3].set_color("red")
+mpl.legend([Line2D([0], [0], color="red", lw=4)], ["Mode"])
+
+# Standard Deviation
+mpl.figure(3)
+mpl.title("Mean Age of Sample Students")
+mpl.xlabel("Students")
+mpl.ylabel("Ages")
+
+mpl.bar(bar_x, bar_y, width=0.3)
+mpl.plot(mean_points_x, mean_points_y, color="yellow", label="Mean", linewidth=4)
+mpl.errorbar(mean_points_x, mean_points_y, yerr=sample_std, color="lightblue")
+mpl.legend(
+    [Line2D([0], [0], color="lightblue", lw=4), Line2D([0], [0], color="yellow", lw=4)],
+    ["Standard Deviation", "Mean"],
+)
 
 mpl.show()
