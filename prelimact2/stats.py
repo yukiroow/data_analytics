@@ -63,7 +63,7 @@ y_points = ggl_stocks
 
 mpl.figure(1)
 mpl.title("Changes in Google Stocks Overtime (September 15, 2015 - October 16, 2025)")
-mpl.xlabel("Date")
+mpl.xlabel("Date (DD-MM)")
 mpl.ylabel("Google Stock Price")
 mpl.plot(x_points, y_points, color="lightblue")
 for i in range(y_points.size - 1):
@@ -75,7 +75,7 @@ y_points = np.array(mcsft_stocks)
 
 mpl.figure(2)
 mpl.title("Changes in Microsoft Stocks Overtime (September 15, 2015 - October 16, 2025)")
-mpl.xlabel("Date")
+mpl.xlabel("Date (DD-MM)")
 mpl.ylabel("Microsoft Stock Price")
 mpl.plot(x_points, y_points, color="lightblue")
 for i in range(y_points.size - 1):
