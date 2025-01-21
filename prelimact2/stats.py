@@ -4,6 +4,8 @@
 # Prelim Activity 2
 
 import pandas as panda
+import numpy as np
+import matplotlib.pyplot as mpl
 
 stocks = class_data = panda.read_csv("prelimact2/stocks.csv")
 
@@ -52,3 +54,30 @@ mcsft_std = mcsft_stocks.std(ddof = 0)
 # Coefficient of Variation
 ggl_coeffvar = ggl_std / ggl_mean
 mcsft_coeffvar = mcsft_std / mcsft_mean
+
+# Visualization
+
+# Google
+x_points = np.array(stocks["Date (2015)"])
+y_points = ggl_stocks
+
+mpl.figure(1)
+mpl.title("Changes in Google Stocks Overtime (September 15, 2015 - October 16, 2025)")
+mpl.xlabel("Date")
+mpl.ylabel("Google Stock Price")
+mpl.plot(x_points, y_points, color="lightblue")
+for i in range(y_points.size - 1):
+    mpl.text(x_points[i], y_points[i], y_points[i])
+
+# Microsoft
+x_points = np.array(stocks["Date (2015)"])
+y_points = np.array(mcsft_stocks)
+
+mpl.figure(2)
+mpl.title("Changes in Microsoft Stocks Overtime (September 15, 2015 - October 16, 2025)")
+mpl.xlabel("Date")
+mpl.ylabel("Microsoft Stock Price")
+mpl.plot(x_points, y_points, color="lightblue")
+for i in range(y_points.size - 1):
+    mpl.text(x_points[i], y_points[i], y_points[i])
+mpl.show()
